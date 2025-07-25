@@ -1,13 +1,14 @@
 {% set name = "e1" %}
-{% set version = "0.1.2" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/e1-{{ version }}.tar.gz
-  sha256: f49ed551496db8f8f05ca994089dea6f2f3d281cdd2498d63349a804fd7f9a3e
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/e1-{{ version }}.tar.gz
+  sha256: ac0d74fe24270676933f4968137518b1955e6baf9aa7ad534ff4aba22da76724
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -28,12 +29,17 @@ requirements:
     - numpy
 
 test:
-  imports:
-    - e1
-  commands:
-    - pip check
   requires:
     - pip
+    - pytest
+  source_files:
+    - tests/test_e1.py
+  imports:
+    - e1
+    - pytest
+  commands:
+    - pip check
+    - pytest tests/
 
 about:
   home: https://github.com/LANL-seismoacoustics/e1
