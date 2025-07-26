@@ -1,5 +1,5 @@
 {% set name = "e1" %}
-{% set version = "0.1.2" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/e1-{{ version }}.tar.gz
-  sha256: f49ed551496db8f8f05ca994089dea6f2f3d281cdd2498d63349a804fd7f9a3e
+  sha256: ac0d74fe24270676933f4968137518b1955e6baf9aa7ad534ff4aba22da76724
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   build:
