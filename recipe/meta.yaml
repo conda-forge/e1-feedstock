@@ -30,10 +30,15 @@ requirements:
 test:
   imports:
     - e1
+    - pytest
   commands:
     - pip check
+    - pytest tests/test_e1.py
   requires:
     - pip
+    - pytest
+  source_files:
+    - tests/test_e1.py
 
 about:
   home: https://github.com/LANL-seismoacoustics/e1
